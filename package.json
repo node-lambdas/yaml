@@ -4,5 +4,8 @@
   "type": "module",
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "yaml": "^1.10.0"
   }
 }

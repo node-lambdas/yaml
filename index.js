@@ -1,3 +1,7 @@
-import { lambda } from 'node-lambdas';
+import { lambda, Format } from "node-lambdas";
+import YAML from "yaml";
 
-lambda((input, output) => input.pipe(output));
+lambda(
+  { readBody: true, input: Format.Json, output: Format.Text },
+  (input, output) => output.send(YAML.stringify(input.body))
+);
