@@ -1,10 +1,7 @@
 {
   "name": "@node-lambdas/yaml",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "type": "module",
-  "publishConfig": {
-    "access": "public"
-  },
   "dependencies": {
     "yaml": "^1.10.0"
   }

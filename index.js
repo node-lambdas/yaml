@@ -1,11 +1,14 @@
-import { lambda, Format } from "node-lambdas";
-import YAML from "yaml";
+import { lambda, Format } from '@node-lambdas/core';
+import YAML from 'yaml';
+
+const configuration = {
+  version: 1,
+  input: Format.Text,
+  output: Format.Text,
+};
 
 lambda(
-  {
-    input: Format.Text,
-    output: Format.Text
-  },
+  configuration,
   (input, output) => {
     switch (input.url) {
       case '/':
@@ -18,5 +21,5 @@ lambda(
       default:
         output.reject('Invalid action. Must be either encode or decode');
     }
-  }
+  },
 );
