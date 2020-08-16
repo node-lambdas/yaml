@@ -2,6 +2,21 @@ import { lambda, Format } from "node-lambdas";
 import YAML from "yaml";
 
 lambda(
-  { readBody: true, input: Format.Json, output: Format.Text },
-  (input, output) => output.send(YAML.stringify(input.body))
+  {
+    input: Format.Text,
+    output: Format.Text
+  },
+  (input, output) => {
+    switch (input.url) {
+      case '/':
+      case '/encode':
+        return output.send(YAML.stringify(JSON.parse(input.body)));
+
+      case '/decode':
+        return output.send(YAML.parse(input.body));
+
+      default:
+        output.reject('Invalid action. Must be either encode or decode');
+    }
+  }
 );
