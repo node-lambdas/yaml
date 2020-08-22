@@ -4,7 +4,6 @@ import YAML from 'yaml';
 const configuration = {
   version: 2,
   actions: {
-
     encode: {
       default: true,
       input: Format.Json,
@@ -16,8 +15,8 @@ const configuration = {
       input: Format.Text,
       output: Format.Json,
       handler: (input, output) => output.send(YAML.parse(input.body)),
-    }
-  }
+    },
+  },
 };
 
 export default lambda(configuration);
