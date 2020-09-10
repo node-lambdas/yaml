@@ -5,6 +5,7 @@ const configuration = {
   version: 2,
   actions: {
     encode: {
+      description: 'Format JSON as YAML',
       default: true,
       input: Format.Json,
       output: Format.Text,
@@ -12,6 +13,7 @@ const configuration = {
     },
 
     decode: {
+      description: 'Format YAML as JSON',
       input: Format.Text,
       output: Format.Json,
       handler: (input, output) => output.send(YAML.parse(input.body)),
